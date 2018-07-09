@@ -47,8 +47,6 @@
   .co2ok_container table {
     border-collapse: collapse;
     border-spacing: 0; }
-  .co2ok_container .pointer {
-    cursor: pointer; }
   .co2ok_container .co2ok_adaptive_color {
     color: white; }
   .co2ok_container .co2ok_payoff {
@@ -164,6 +162,8 @@ img#co2ok_logo_minimal_info {
   background: white;
   border-radius: 15px;
   box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  font-size: 0.9em;
   z-index: 999999;
   display: none;
   padding: 10px;

@@ -56,9 +56,9 @@ msgstr "Maak mijn aankoop klimaatneutraal"
 msgid "During manufacturing and shipping of products, greenhouse gases are emitted"
 msgstr "Tijdens productie en vervoer van producten komen broeikasgassen vrij"
 
-#: Templates/co2ok_button_template_default.php:50
-msgid "We make sure the same amount of emissions is prevented"
-msgstr "Wij zorgen ervoor dat evenveel uitstoot voorkomen wordt"
+#: Templates/co2ok_button_template_default.php:46
+msgid "We prevent the same amount of emissions"
+msgstr "Wij voorkomen evenveel uitstoot"
 
 #: Templates/co2ok_button_template_default.php:55
 msgid "This way, your purchase is climate neutral!"
