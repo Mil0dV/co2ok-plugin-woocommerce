@@ -34,6 +34,12 @@ To get Gulp working you follow the following steps:
 3. run `which node`
 4. run `npm install node-gyp@latest` 
 
+### .po & .mo files for languages
+
+To get a .mo file you can use for languages, you need to convert a .po file to .mo,
+go to the following website, upload your .po file and press convert:
+https://po2mo.net/
+
 ## Contributing
 
  1. **Fork** the repo on GitHub
