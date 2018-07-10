@@ -251,6 +251,18 @@ img#co2ok_logo_minimal_info {
         justify-content: center;
 
       }
+
+      .svg-img-large {
+        display: flex;
+        justify-content: center; /* align horizontal */
+        align-items: center; /* align vertical */
+        height: 60%;
+        width: 68%;
+        align-items: center;
+        justify-content: center;
+
+      }
+
       .text-block {
         margin: 0px;
         font-size: 0.9em;
