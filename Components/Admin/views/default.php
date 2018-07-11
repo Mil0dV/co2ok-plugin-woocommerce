@@ -36,7 +36,7 @@
                             ship them until they're extremely well tested and polished. Let us know if you have other
                              ideas how we can improve our service/plugin!</p>     
 
-                        <!--<h2>Compensation preferences:</h2>
+                        <h2>Compensation preferences:</h2>
                         <p>By default we have set the button to OFF. But you can decide to set the CO2 OK button to default ON. This way you are in control,
                         helping the environment even more!</p>
                         
@@ -50,7 +50,7 @@
                             
                             <p style="margin-top: 12px">
                                 <input type="submit" value="Save" class="button button-primary button-large"></p>
-                        </form>-->
+                        </form>
 
                         <h2>Choose Button Style:</h2>
                         <p>We've done our best to create an optimised and fetching design for our button - but we've also created a minimal design, for the minimalists :)</p>
