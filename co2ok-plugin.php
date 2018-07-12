@@ -102,7 +102,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
 
     // Percentage should be returned by the middleware, else: 1%
     private $percentage = 1;
-    private $surcharge  = 0;
+    public $surcharge  = 0;
 
     private $helperComponent;
 
@@ -457,7 +457,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
         }
     }
 
-    final private function co2ok_calculateSurcharge($add_tax=false)
+    final public function co2ok_calculateSurcharge($add_tax=false)
     /**
 	 * Returns surcharge, optionally with tax
 	 */
@@ -519,7 +519,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
         return $cart;
     }
 
-    final private function renderCheckbox()
+    final public function renderCheckbox()
     {
         global $woocommerce;
         $this->surcharge = $this->co2ok_calculateSurcharge($add_tax=true);

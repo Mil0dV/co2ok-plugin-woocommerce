@@ -32,37 +32,20 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent' 
 
             $optinIsTrue = get_option('co2ok_optin', 'off');
 
-            if ( ! function_exists('write_log')) {
-                function write_log ( $log ) {
-                    if ( is_array( $log ) || is_object( $log ) ) {
-                        error_log( print_r( $log, true ) );
-                    } else {
-                        error_log( $log );
-                    }
-                }
-            }
-            
-            write_log($woocommerce->session->co2ok);
-            write_log('henk');
-
-            // $co2okPlugin = new Co2ok_Plugin();
-
-            // TODO onderstaande dubbele conditie fixen
-            // !$woocommerce->session->co2ok moet dus zijn: als die niet bestaat 
-            // if ($optinIsTrue && !$woocommerce->session->co2ok) {
-
-            if ($optinIsTrue) {
+            $co2okPlugin = new \co2ok_plugin_woocommerce\Co2ok_Plugin();
+                    
+                    // !$woocommerce->session->co2ok should be: if it doesn't exist
+            if ($optinIsTrue == get_option('co2ok_optin', 'on') && ! $woocommerce->session->__isset('co2ok')) {
                 $woocommerce->session->co2ok = 1;
-                // \Co2ok_Plugin\co2ok_woocommerce_custom_surcharge();
-                // $cart = $woocommerce->cart->get_cart();
-                // $Co2ok_Plugin->co2ok_woocommerce_custom_surcharge($cart);
+
+                $co2okPlugin->surcharge = $co2okPlugin->co2ok_calculateSurcharge();
+                $woocommerce->cart->add_fee(__( 'CO2 compensation (Inc. VAT)', 'co2ok-for-woocommerce' ), $co2okPlugin->surcharge, true, '');
             }
 
             // Render checkbox / button according to admin settings
             echo $templateRenderer->render(get_option('co2ok_button_template', 'co2ok_button_template_default'),
             array('cart' => $cart,
-                    'co2_ok_session_opted' =>  $woocommerce->session->co2ok,
-                    'co2ok_optin' =>  $optinIsTrue,
+                    'co2ok_session_opted' =>  $woocommerce->session->co2ok,
                     'currency_symbol' =>get_woocommerce_currency_symbol(),
                     'surcharge' => $surcharge
                 )
