@@ -35,7 +35,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent' 
             $co2okPlugin = new \co2ok_plugin_woocommerce\Co2ok_Plugin();
                     
                     // !$woocommerce->session->co2ok should be: if it doesn't exist
-            if ($optinIsTrue == get_option('co2ok_optin', 'on') && ! $woocommerce->session->__isset('co2ok')) {
+            if ($optinIsTrue == 'on' && ! $woocommerce->session->__isset('co2ok')) {
                 $woocommerce->session->co2ok = 1;
 
                 $co2okPlugin->surcharge = $co2okPlugin->co2ok_calculateSurcharge();
