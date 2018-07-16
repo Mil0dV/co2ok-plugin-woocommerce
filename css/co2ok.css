@@ -51,7 +51,7 @@
     color: white; }
   .co2ok_container .co2ok_payoff {
     width: 100%;
-    margin-top: 7px;
+    margin-top: -6px;
     font-size: 14px;
     text-align: center;
     font-family: Roboto, sans-serif;
@@ -60,19 +60,26 @@
     line-height: normal;
     display: block;
     letter-spacing: -0.0538461em;
-    margin-left: -5%;
+    margin-left: -3%;
     color: #4D5155;
     width: 110%; }
     .co2ok_container .co2ok_payoff #p {
       vertical-align: middle;
       display: inline-block;
-      margin-left: 12px; }
-      .co2ok_container .co2ok_payoff #p img {
-        width: 18px;
+      margin-left: -6px; }
+      .co2ok_container .co2ok_payoff #p .co2ok_info_hitarea {
+        height: 40px;
+        width: 40px;
+        background-color: rgba(187, 187, 187, 0);
+        border-radius: 50%;
         display: inline-block; }
-        @media (max-width: 768px) {
-          .co2ok_container .co2ok_payoff #p img {
-            width: 18px; } }
+        .co2ok_container .co2ok_payoff #p .co2ok_info_hitarea img {
+          width: 18px;
+          margin-top: 11px;
+          display: inline-block; }
+          @media (max-width: 768px) {
+            .co2ok_container .co2ok_payoff #p .co2ok_info_hitarea img {
+              width: 18px; } }
   .co2ok_container .co2ok_checkbox_container {
     border-radius: 10px;
     box-sizing: border-box;

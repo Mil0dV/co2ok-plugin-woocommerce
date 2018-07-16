@@ -60,7 +60,7 @@
 
     .co2ok_payoff {
          width: 100%;
-         margin-top: 7px;
+         margin-top: -6px;
          font-size: 14px;
          text-align: center;
          font-family: $font;
@@ -69,20 +69,30 @@
          line-height: normal;
          display: block;
          letter-spacing: -0.0538461em;
-         margin-left: -5%;
+         margin-left: -3%;
          color: #4D5155;
          width: 110%;
          #p {
              vertical-align: middle;
              display: inline-block;
-             margin-left: 12px;
-             & img{
-                 width: 18px;
-                 //margin-top: -6px;
-                 display: inline-block;
-                 @media #{$small} {
-                  width: 18px;
-                 }
+             margin-left: -6px;
+            .co2ok_info_hitarea{
+                height: 40px;
+                width: 40px;
+                background-color: rgb(0, 0, 0, 0);
+                border-radius: 50%;
+                display: inline-block;
+                //margin-left: 5px;
+                //top: 10px;
+                & img{
+                    width: 18px;
+                    margin-top: 11px;
+                    //margin-top: -6px;
+                    display: inline-block;
+                    @media #{$small} {
+                    width: 18px;
+                    }
+                }
             }
         }
     }

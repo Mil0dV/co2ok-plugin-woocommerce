@@ -251,6 +251,7 @@ var Co2ok_JS = function ()
              jQuery(e.target).hasClass("text-block") ||
              jQuery(e.target).hasClass("inner-wrapper") ||
              jQuery(e.target).hasClass("co2ok_info") ||
+             jQuery(e.target).hasClass("co2ok_info_hitarea") ||
              jQuery(e.target).hasClass("co2ok_infobox_container") ||
              jQuery(e.target).hasClass("hover-link");
          },
@@ -288,6 +289,8 @@ var Co2ok_JS = function ()
               }
               else {
                 _this.ShowInfoBox();
+                var elmnt = document.getElementById("infobox-view");
+                elmnt.scrollIntoView(false); // false leads to bottom of the infobox
               }
             })
 
@@ -304,6 +307,8 @@ var Co2ok_JS = function ()
                   }
                   else {
                     _this.ShowInfoBox();
+                    var elmnt = document.getElementById("infobox-view");
+                    elmnt.scrollIntoView(false); // false leads to bottom of the infobox
                   }
                 });
             }

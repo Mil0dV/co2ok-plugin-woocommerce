@@ -31,10 +31,12 @@
             ?>
         </span>
         <span id="p">
-            <?php echo co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent::RenderImage('images/info.svg', 'co2ok_info', 'co2ok_info'); ?>
+            <span class="co2ok_info_hitarea">
+                <?php echo co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent::RenderImage('images/info.svg', 'co2ok_info', 'co2ok_info'); ?>
+            </span>
         </span>
 
-        <div class="co2ok_infobox_container co2ok-popper">
+        <div class="co2ok_infobox_container co2ok-popper" id="infobox-view">
 
         <div class="inner-wrapper">
         <p class="text-block greyBorder"><?php echo __('During manufacturing and shipping of products, greenhouse gases are emitted',  'co2ok-for-woocommerce' );?></p>
