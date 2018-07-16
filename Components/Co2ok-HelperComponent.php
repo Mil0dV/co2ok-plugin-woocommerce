@@ -38,7 +38,8 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent' 
             if ($optinIsTrue == 'on' && ! $woocommerce->session->__isset('co2ok')) {
                 $woocommerce->session->co2ok = 1;
 
-                $co2okPlugin->surcharge = $co2okPlugin->co2ok_calculateSurcharge();
+                $co2okPlugin->surcharge = $co2okPlugin->co2ok_calculateSurcharge($add_tax=true);
+                // echo "<script>console.log(".json_encode($co2okPlugin->surcharge).")</script>";
                 $woocommerce->cart->add_fee(__( 'CO2 compensation (Inc. VAT)', 'co2ok-for-woocommerce' ), $co2okPlugin->surcharge, true, '');
             }
 
