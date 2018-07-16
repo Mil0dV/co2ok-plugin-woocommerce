@@ -306,9 +306,15 @@ if ( ! class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
 					Co2ok_Plugin::registerMerchant();
 				}
 			} else {
-				// TODO this needs to be a prettier warning, but at least it doesn't break WP.
-				trigger_error( __( 'Co2ok Plugin needs Woocommerce to work, please install woocommerce and try again.', 'co2ok-for-woocommerce' ), E_USER_WARNING );
+				add_action( 'admin_notices', 'co2ok_woocommerce_not_active' );
 			}
+		}
+
+		/**
+		 * Show a message to alert the user WooCommerce is needed for this plugin. (and offer a quick link to download it).
+		 */
+		public function co2ok_woocommerce_not_active() {
+			echo '<div class="error"><p><strong>' . sprintf( esc_html__( 'This plugin requires WooCommerce to be installed and active. You can download %s here.', 'co2ok-for-woocommerce' ), '<a href="https://woocommerce.com/" target="_blank">WooCommerce</a>' ) . '</strong></p></div>';
 		}
 
 		final public function co2ok_ajax_set_percentage() {
