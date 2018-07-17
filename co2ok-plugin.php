@@ -464,9 +464,8 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
     {
         global $woocommerce;
 
-        if ($woocommerce->session->percentage)
+        if ($woocommerce->session->percentage)	
             $this->percentage = $woocommerce->session->percentage;
-
 
         $order_total = $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total;
         $tax_rates = \WC_Tax::get_base_tax_rates( );
@@ -519,7 +518,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
         return $cart;
     }
 
-    final private function renderCheckbox()
+    final public function renderCheckbox()
     {
         global $woocommerce;
         $this->surcharge = $this->co2ok_calculateSurcharge($add_tax=true);
@@ -557,10 +556,13 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
             }
         }
 
+        $optoutIsTrue = get_option('co2ok_optout', 'off');
+        
+        if ($optoutIsTrue == 'on' && ! $woocommerce->session->__isset('co2ok'))
+            $woocommerce->session->co2ok = 1;
+
         if ($woocommerce->session->co2ok == 1)
-        {
             $woocommerce->cart->add_fee(__( 'CO2 compensation (Inc. VAT)', 'co2ok-for-woocommerce' ), $this->surcharge, true, '');
-        }
 
     }
 }

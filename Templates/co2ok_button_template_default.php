@@ -1,13 +1,13 @@
 <div class="co2ok_container co2ok_container_default" data-cart="<?php echo $cart ?>">
 
-    <span class="co2ok_checkbox_container co2ok_checkbox_container_default <?php echo ($co2_ok_session_opted == 1 || $co2ok_optin == 'on' ? 'selected' : 'unselected' )?>">
+    <span class="co2ok_checkbox_container co2ok_checkbox_container_default <?php echo ($co2ok_session_opted == 1 ? 'selected' : 'unselected' )?>">
         <?php
             woocommerce_form_field('co2ok_cart', array(
                 'type' => 'checkbox',
                 'id' => 'co2ok_cart',
                 'class' => array('co2ok_cart'),
                 'required' => false,
-            ), $co2_ok_session_opted);
+            ), $co2ok_session_opted);
         ?>
 
         <div id="checkbox_label">
