@@ -1,13 +1,13 @@
 <div class="co2ok_container co2ok_container_minimal"data-cart="<?php echo $cart ?>">
 
-    <span class="co2ok_checkbox_container co2ok_checkbox_container_minimal <?php echo ($co2_ok_session_opted == 1 || $co2ok_optin == 'on' ? 'selected' : 'unselected' )?>">
+    <span class="co2ok_checkbox_container co2ok_checkbox_container_minimal <?php echo ($co2ok_session_opted == 1 ? 'selected' : 'unselected' )?>">
         <?php
             woocommerce_form_field('co2ok_cart', array(
                 'type' => 'checkbox',
                 'id' => 'co2ok_cart',
                 'class' => array('co2ok_cart'),
                 'required' => false,
-            ), $co2_ok_session_opted);
+            ), $co2ok_session_opted);
         ?>
 
 
@@ -53,8 +53,8 @@
         </div>
 
         <div class="inner-wrapper">
-          <?php echo co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent::RenderImage('images/even.svg', 'svg-img', '  co2ok_info_hover_image'); ?>
-          <p class="text-block greyBorder"><?php echo __('We make sure the same amount of emissions is prevented',  'co2ok-for-woocommerce' );?></p>
+          <?php echo co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent::RenderImage('images/even.svg', 'svg-img-large', '  co2ok_info_hover_image'); ?>
+          <p class="text-block greyBorder"><?php echo __('We prevent the same amount of emissions',  'co2ok-for-woocommerce' );?></p>
         </div>
 
         <div class="inner-wrapper">

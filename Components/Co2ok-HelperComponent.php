@@ -26,17 +26,13 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent' 
         public function RenderCheckbox($surcharge, $cart)
         {
             global $woocommerce;
-            global $Co2ok_Plugin;
 
             $templateRenderer = new Co2ok_TemplateRenderer(plugin_dir_path(__FILE__).'../Templates/');
-
-            $optinIsTrue = get_option('co2ok_optin', 'off');
 
             // Render checkbox / button according to admin settings
             echo $templateRenderer->render(get_option('co2ok_button_template', 'co2ok_button_template_default'),
             array('cart' => $cart,
-                    'co2_ok_session_opted' =>  $woocommerce->session->co2ok,
-                    'co2ok_optin' =>  $optinIsTrue,
+                    'co2ok_session_opted' =>  $woocommerce->session->co2ok,
                     'currency_symbol' =>get_woocommerce_currency_symbol(),
                     'surcharge' => $surcharge
                 )

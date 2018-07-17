@@ -169,6 +169,8 @@ img#co2ok_logo_minimal_info {
   background: white;
   border-radius: 15px;
   box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  font-size: 0.9em;
   z-index: 999999;
   display: none;
   padding: 10px;
@@ -198,9 +200,19 @@ img#co2ok_logo_minimal_info {
       width: 58%;
       align-items: center;
       justify-content: center; }
+    .co2ok_infobox_container .inner-wrapper .svg-img-large {
+      display: flex;
+      justify-content: center;
+      /* align horizontal */
+      align-items: center;
+      /* align vertical */
+      height: 60%;
+      width: 65%;
+      align-items: center;
+      justify-content: center; }
     .co2ok_infobox_container .inner-wrapper .text-block {
       margin: 0px;
-      font-size: 0.9em;
+      font-size: 1em;
       line-height: normal;
       box-sizing: border-box;
       text-align: left;
