@@ -42,10 +42,10 @@
                         
                         <form method="POST">
                         
-                            <input type="radio" name="co2ok_optin" id="on" value="on" <?php if($co2ok_optin == 'on') echo "checked" ?> >
+                            <input type="radio" name="co2ok_optout" id="on" value="on" <?php if($co2ok_optout == 'on') echo "checked" ?> >
                             <label style="display: inline" for="on">Compensation default ON. (Preferred)</label>
                             <br>
-                            <input type="radio" name="co2ok_optin" id="off" value="off" <?php if($co2ok_optin == 'off') echo "checked" ?> >
+                            <input type="radio" name="co2ok_optout" id="off" value="off" <?php if($co2ok_optout == 'off') echo "checked" ?> >
                             <label style="display: inline" for="off">Compensation default OFF.</label>
                             
                             <p style="margin-top: 12px">

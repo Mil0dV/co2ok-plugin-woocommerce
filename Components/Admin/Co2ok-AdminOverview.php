@@ -60,9 +60,9 @@ class Co2ok_AdminOverview
             update_option('co2ok_statistics', 'on');
         }
 
-        if (isset($_POST['co2ok_optin']))
+        if (isset($_POST['co2ok_optout']))
         {
-            update_option('co2ok_optin', $_POST['co2ok_optin']);
+            update_option('co2ok_optout', $_POST['co2ok_optout']);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
@@ -73,19 +73,19 @@ class Co2ok_AdminOverview
                 update_option('co2ok_statistics', 'off');
             }
 
-            if (!isset($_POST['co2ok_optin']))
+            if (!isset($_POST['co2ok_optout']))
             {
-                $_POST['co2ok_optin'] = 'off';
-                update_option('co2ok_optin', 'off');
+                $_POST['co2ok_optout'] = 'off';
+                update_option('co2ok_optout', 'off');
             }
 
             $graphQLClient = new \co2ok_plugin_woocommerce\Components\Co2ok_GraphQLClient(\co2ok_plugin_woocommerce\Co2ok_Plugin::$co2okApiUrl);
 
             $merchantId = get_option('co2ok_id', false);
             $co2ok_statistics = get_option('co2ok_statistics', 'off');
-            $co2ok_optin = get_option('co2ok_optin', 'off');
+            $co2ok_optout = get_option('co2ok_optout', 'off');
 
-            $graphQLClient->mutation(function ($mutation) use ($merchantId, $co2ok_statistics, $co2ok_optin)
+            $graphQLClient->mutation(function ($mutation) use ($merchantId, $co2ok_statistics, $co2ok_optout)
             {
                 $mutation->setFunctionName('updateMerchant');
 
@@ -93,7 +93,7 @@ class Co2ok_AdminOverview
                     array(
                         'merchantId' => $merchantId,
                         'sendStats' => $co2ok_statistics,
-                        'optin' => $co2ok_optin
+                        'optout' => $co2ok_optout
                     )
                 );
                 $mutation->setFunctionReturnTypes(array('ok'));
@@ -107,7 +107,7 @@ class Co2ok_AdminOverview
 
         $co2ok_button_template = get_option('co2ok_button_template', 'co2ok_button_template_default');
         $co2ok_statistics = get_option('co2ok_statistics', 'off');
-        $co2ok_optin = get_option('co2ok_optin', 'off');
+        $co2ok_optout = get_option('co2ok_optout', 'off');
       
         include_once plugin_dir_path(__FILE__).'views/default.php';
     }
