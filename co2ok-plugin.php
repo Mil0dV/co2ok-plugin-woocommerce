@@ -464,13 +464,6 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
     {
         global $woocommerce;
 
-        if ($woocommerce->session->percentage) {
-            $this->percentage = $woocommerce->session->percentage;
-        }
-        else {
-            $this->percentage = 1;
-        }
-
 
         $order_total = $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total;
         $tax_rates = \WC_Tax::get_base_tax_rates( );
