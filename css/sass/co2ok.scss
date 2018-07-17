@@ -91,9 +91,6 @@
                     margin-top: 25px;
                     //margin-top: -6px;
                     display: inline-block;
-                    @media #{$small} {
-                    width: 18px;
-                    }
                 }
             }
         }
@@ -477,12 +474,21 @@ img#co2ok_logo_minimal_info {
                         display: inline-block;
                         padding: none;
                         margin-left: 7px;
-                        & img{
-                            width: 18px;
-                            margin-top: -3px;
+                        .co2ok_info_hitarea{
+                            height: 72px;
+                            width: 72px;
+                            background-color: rgba(0, 0, 0, 0);
+                            border-radius: 50%;
                             display: inline-block;
-                            @media #{$small} {
-                             width: 16px;
+                            margin-left: -25px;
+                            position: relative;
+                            bottom: 30px;
+                            //margin-left: 5px;
+                            //top: 10px;
+                            & img{
+                                width: 18px;
+                                margin-top: 27px;
+                                display: inline-block;
                             }
                         }
                     }
