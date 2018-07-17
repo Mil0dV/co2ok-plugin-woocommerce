@@ -102,7 +102,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
 
     // Percentage should be returned by the middleware, else: 1%
     private $percentage = 1;
-    public $surcharge  = 0;
+    private $surcharge  = 0;
 
     private $helperComponent;
 
@@ -457,7 +457,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
         }
     }
 
-    final public function co2ok_calculateSurcharge($add_tax=false)
+    final private function co2ok_calculateSurcharge($add_tax=false)
     /**
 	 * Returns surcharge, optionally with tax
 	 */
@@ -575,7 +575,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
             add_action( 'woocommerce_cart_calculate_fees','woocommerce_co2ok_optoutcharge' ); // hook optout charge to woocommerce cart calculate fees
 
             function woocommerce_co2ok_optoutcharge() {
-                $woocommerce->cart->add_fee(__( 'CO2 compensation (Inc. VAT)', 'co2ok-for-woocommerce' ), $this->co2ok_calculateSurcharge($add_tax=true), true, '');
+                $woocommerce->cart->add_fee(__( 'CO2 compensation (Inc. VAT)', 'co2ok-for-woocommerce' ), $this->surcharge, true, '');
             }
         }
     }
