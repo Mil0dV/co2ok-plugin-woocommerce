@@ -26,22 +26,8 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent' 
         public function RenderCheckbox($surcharge, $cart)
         {
             global $woocommerce;
-            global $Co2ok_Plugin;
 
             $templateRenderer = new Co2ok_TemplateRenderer(plugin_dir_path(__FILE__).'../Templates/');
-
-            $optinIsTrue = get_option('co2ok_optin', 'off');
-
-            $co2okPlugin = new \co2ok_plugin_woocommerce\Co2ok_Plugin();
-                    
-                    // !$woocommerce->session->co2ok should be: if it doesn't exist
-            if ($optinIsTrue == 'on' && ! $woocommerce->session->__isset('co2ok')) {
-                $woocommerce->session->co2ok = 1;
-
-                $co2okPlugin->surcharge = $co2okPlugin->co2ok_calculateSurcharge($add_tax=true);
-                // echo "<script>console.log(".json_encode($co2okPlugin->surcharge).")</script>";
-                $woocommerce->cart->add_fee(__( 'CO2 compensation (Inc. VAT)', 'co2ok-for-woocommerce' ), $co2okPlugin->surcharge, true, '');
-            }
 
             // Render checkbox / button according to admin settings
             echo $templateRenderer->render(get_option('co2ok_button_template', 'co2ok_button_template_default'),
