@@ -464,6 +464,8 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
     {
         global $woocommerce;
 
+        if ($woocommerce->session->percentage)	
+            $this->percentage = $woocommerce->session->percentage;
 
         $order_total = $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total;
         $tax_rates = \WC_Tax::get_base_tax_rates( );
@@ -554,23 +556,14 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
             }
         }
 
-        if ($woocommerce->session->co2ok == 1)
-        {
-            $woocommerce->cart->add_fee(__( 'CO2 compensation (Inc. VAT)', 'co2ok-for-woocommerce' ), $this->surcharge, true, '');
-        }
-
         $optoutIsTrue = get_option('co2ok_optout', 'off');
-
-        // if optout is true and user is in a new session, session is set and co2ok calculated surcharge is added to cart fee
-        if ($optoutIsTrue == 'on' && ! $woocommerce->session->__isset('co2ok')) {
+        
+        if ($optoutIsTrue == 'on' && ! $woocommerce->session->__isset('co2ok'))
             $woocommerce->session->co2ok = 1;
 
-            add_action( 'woocommerce_cart_calculate_fees','woocommerce_co2ok_optoutcharge' ); // hook optout charge to woocommerce cart calculate fees
+        if ($woocommerce->session->co2ok == 1)
+            $woocommerce->cart->add_fee(__( 'CO2 compensation (Inc. VAT)', 'co2ok-for-woocommerce' ), $this->surcharge, true, '');
 
-            function woocommerce_co2ok_optoutcharge() {
-                $woocommerce->cart->add_fee(__( 'CO2 compensation (Inc. VAT)', 'co2ok-for-woocommerce' ), $this->surcharge, true, '');
-            }
-        }
     }
 }
 endif; //! class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' )
