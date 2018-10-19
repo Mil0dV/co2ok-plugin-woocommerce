@@ -77,7 +77,7 @@ var Co2ok_JS = function ()
 
 
             jQuery(document).ready(function () {
-                jQuery( document.body ).on( 'updated_cart_totals', function(){
+                function compensationAmountTextSize() {
 
                     //cad = compensation_amount_default
                     _this.GetPercentageFromMiddleware();
@@ -150,6 +150,14 @@ var Co2ok_JS = function ()
                       }
 
                     }
+                }
+
+                if(jQuery(".co2ok_container").length ) {
+                    compensationAmountTextSize();
+                }
+                
+                jQuery( document.body ).on( 'updated_cart_totals', function(){
+                    compensationAmountTextSize();
 
                 });
 
