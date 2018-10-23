@@ -11,7 +11,7 @@
         ?>
 
         <a href="#!" input type="button" role="button" tabindex="0" style="outline: none; -webkit-appearance: none;" class="co2ok_nolink">
-          <div class="inner_checkbox_label inner_checkbox_label_minimal global" input type="button" role="button" tabindex="0" style="outline: none; -webkit-appearance: none;">
+          <div class="inner_checkbox_label inner_checkbox_label_minimal global" id="minimalTemp" input type="button" role="button" tabindex="0" style="outline: none; -webkit-appearance: none;">
             <div id="checkbox">
             </div>
 
@@ -93,40 +93,23 @@
 
    //cad = compensation_amount_minimun
    var cad_minimal = document.querySelector('.compensation_amount_minimal');
-   var make_minimal_minimal = document.querySelector('.make_minimal');
+   var make_minimal = document.querySelector('.make_minimal');
    var co2ok_logo_minimal = document.querySelector('.co2ok_logo_minimal');
-
-   var qty = document.querySelector('.qty');console.log(qty.value.length);
-   var qtyVal = qty.value.length;
    var global = document.querySelector('.global');
-
-   // if(global.className == 'inner_checkbox_label inner_checkbox_label_default')
-   // {
-   //
-   //   defaultButton();
-   //
-   // }else{
-   //
-   //   minimunButton();
-   //
-   // }
-
-
-   // function defaultButton()
-   // {
-   //
-
 
 
    function minimunButton()
    {
+
+     var qty = document.querySelector('.qty');
+     var qtyVal = qty.value.length;
 
      if(qtyVal > 1)
      {
 
         cad_minimal.style.fontSize = 15 - qtyVal+'px';
        // cad_minimal.style.marginTop = 9 + qtyVal+'px';
-        mak_minimale.style.fontSize = 18 - qtyVal+'px';
+        make_minimal.style.fontSize = 18 - qtyVal+'px';
         co2ok_logo_minimal.style.width = 52 - qtyVal+'px';
 
      }else{
@@ -139,7 +122,12 @@
      }
 
    }
-   minimunButton();
+
+   if(document.querySelector('.qty') != null){
+
+      minimunButton();
+
+   }
 
 
 </script>

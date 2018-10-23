@@ -12,7 +12,7 @@
 
         <div id="checkbox_label">
             <a href="#!" input type="button" role="button" tabindex="0" style="outline: none; -webkit-appearance: none;">
-                <div class="inner_checkbox_label inner_checkbox_label_default global">
+                <div class="inner_checkbox_label inner_checkbox_label_default global" id="defaultTemp">
                     <div id="checkbox">
                     </div>
 
@@ -99,26 +99,32 @@
    var make = document.querySelector('.make_default');
    var co2ok_logo = document.querySelector('.co2ok_logo_default');
 
-   var qty = document.querySelector('.qty');console.log(qty.value.length);
-   var qtyVal = qty.value.length;
    var global = document.querySelector('.global');
 
-   if(qtyVal > 1)
-   {
+   if(document.querySelector('.qty') != null){
 
-      cad.style.fontSize = 18 - qtyVal+'px';
-      cad.style.marginTop = 12 + qtyVal+'px';
-      make.style.fontSize = 21 - qtyVal+'px';
-      co2ok_logo.style.width = 55 - qtyVal+'px';
+     var qty = document.querySelector('.qty');console.log(qty.value.length);
+     var qtyVal = qty.value.length;
 
-   }else{
+     if(qtyVal > 1)
+     {
 
-     cad.style.fontSize = '18px';
-     cad.style.marginTop = '12px';
-     make.style.fontSize = '21px';
-     co2ok_logo.style.width = '55px';
+        cad.style.fontSize = 18 - qtyVal+'px';
+        cad.style.marginTop = 12 + qtyVal+'px';
+        make.style.fontSize = 21 - qtyVal+'px';
+        co2ok_logo.style.width = 55 - qtyVal+'px';
+
+     }else{
+
+       cad.style.fontSize = '18px';
+       cad.style.marginTop = '12px';
+       make.style.fontSize = '21px';
+       co2ok_logo.style.width = '55px';
+
+     }
 
    }
+
 
 
 
