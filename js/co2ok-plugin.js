@@ -1,3 +1,76 @@
+var global = document.querySelector('.global');
+
+
+function minimunButton()
+{
+
+  var cad_minimal = document.querySelector('.compensation_amount_minimal');
+  var make_minimal = document.querySelector('.make_minimal');
+  var co2ok_logo_minimal = document.querySelector('.co2ok_logo_minimal');
+  var qty = document.querySelector('.qty');
+  var qtyVal = qty.value.length;
+
+  if(qtyVal > 1)
+  {
+
+     cad_minimal.style.fontSize = 15 - qtyVal+'px';
+    // cad_minimal.style.marginTop = 9 + qtyVal+'px';
+     make_minimal.style.fontSize = 18 - qtyVal+'px';
+     co2ok_logo_minimal.style.width = 52 - qtyVal+'px';
+
+  }else{
+
+    cad_minimal.style.fontSize = '18px';
+  //  cad_minimal.style.marginTop = '12px';
+    make_minimal.style.fontSize = '21px';
+    co2ok_logo_minimal.style.width = '55px';
+
+  }
+
+}
+
+function defaultButton()
+{
+
+  var cad = document.querySelector('.compensation_amount_default');
+  var make = document.querySelector('.make_default');
+  var co2ok_logo = document.querySelector('.co2ok_logo_default');
+
+    var qty = document.querySelector('.qty');console.log(qty.value.length);
+    var qtyVal = qty.value.length;
+
+    if(qtyVal > 1)
+    {
+
+       cad.style.fontSize = 18 - qtyVal+'px';
+       cad.style.marginTop = 12 + qtyVal+'px';
+       make.style.fontSize = 21 - qtyVal+'px';
+       co2ok_logo.style.width = 55 - qtyVal+'px';
+
+    }else{
+
+      cad.style.fontSize = '18px';
+      cad.style.marginTop = '12px';
+      make.style.fontSize = '21px';
+      co2ok_logo.style.width = '55px';
+
+    }
+
+
+}
+
+
+if(document.querySelector('.qty') != null && document.querySelector('.compensation_amount_default') != null){
+
+   defaultButton();
+
+}else if(document.querySelector('.qty') != null && document.querySelector('.compensation_amount_default') == null){
+
+   minimunButton();
+
+}
+
+
 var co2ok_global = {
 
     IsMobile: function()
@@ -103,11 +176,11 @@ var Co2ok_JS = function ()
                       if(global.id == 'defaultTemp')
                       {
 
-                        defaultButton();
+                        default_button();
 
                       }else{
 
-                        minimunButton();
+                        minimun_button();
 
                       }
 
@@ -118,7 +191,7 @@ var Co2ok_JS = function ()
                     }
 
 
-                    function defaultButton()
+                    function default_button()
                     {
 
                       if(qtyVal > 1)
@@ -141,7 +214,7 @@ var Co2ok_JS = function ()
                     }
 
 
-                    function minimunButton()
+                    function minimun_button()
                     {
 
                       var compensation_amount_minimal = document.querySelector('.compensation_amount_minimal');
