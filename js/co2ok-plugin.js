@@ -1,7 +1,7 @@
 var global = document.querySelector('.co2ok_global_temp');
 
 
-function minimunButton()
+function minimumButton()
 {
 
   var cad_minimal = document.querySelector('.compensation_amount_minimal');
@@ -66,7 +66,7 @@ if(document.querySelector('.qty') != null && document.querySelector('.compensati
 
 }else if(document.querySelector('.qty') != null && document.querySelector('.compensation_amount_default') == null){
 
-   minimunButton();
+   minimumButton();
 
 }
 
@@ -176,11 +176,11 @@ var Co2ok_JS = function ()
                       if(global.id == 'default_co2ok_temp')
                       {
 
-                        default_button();
+                        defaultButton();
 
                       }else{
 
-                        minimun_button();
+                        minimumButton();
 
                       }
 
@@ -191,7 +191,7 @@ var Co2ok_JS = function ()
                     }
 
 
-                    function default_button()
+                    function defaultButton()
                     {
 
                       if(qtyVal > 1)
@@ -214,7 +214,7 @@ var Co2ok_JS = function ()
                     }
 
 
-                    function minimun_button()
+                    function minimumButton()
                     {
 
                       var compensation_amount_minimal = document.querySelector('.compensation_amount_minimal');
