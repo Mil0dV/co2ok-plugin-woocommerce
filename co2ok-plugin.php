@@ -430,17 +430,6 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
         wp_enqueue_style( 'co2ok-google-fonts', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700', false );
     }
 
-    function namespace_async_scripts( $tag, $handle ) {
-      // Just return the tag normally if this isn't one we want to async
-      if ( 'co2ok_js_cdn' !== $handle ) {
-          return $tag;
-          return str_replace( 'https://s3.eu-central-1.amazonaws.com/co2ok-static/co2ok.js', ' async src', $tag );
-      }
-
-    }
-     //add_filter( 'script_loader_tag', 'namespace_async_scripts', 10, 2 );
-
-
     final public function co2ok_javascript()
     {
         wp_register_script('co2ok_js_cdn', 'https://s3.eu-central-1.amazonaws.com/co2ok-static/co2ok.js', null, null, true);

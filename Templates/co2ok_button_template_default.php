@@ -12,11 +12,11 @@
 
         <div id="checkbox_label">
             <a href="#!" input type="button" role="button" tabindex="0" style="outline: none; -webkit-appearance: none;">
-                <div class="inner_checkbox_label inner_checkbox_label_default global" id="defaultTemp">
+                <div class="inner_checkbox_label inner_checkbox_label_default co2ok_global_temp" id="default_co2ok_temp">
                     <div id="checkbox">
                     </div>
 
-                    <span class="make make_default"><?php echo __( 'Make ', 'co2ok-for-woocommerce' ); ?> </span>
+                    <span class="make make_co2ok_default"><?php echo __( 'Make ', 'co2ok-for-woocommerce' ); ?> </span>
                     <?php echo co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent::RenderImage('images/logo.svg', 'co2ok_logo', 'co2ok_logo_default', 'co2ok_logo'); ?>
                     <span class="compensation_amount_default compensation_amount_global">+<?php echo $currency_symbol.''. $surcharge ?> </span>
 

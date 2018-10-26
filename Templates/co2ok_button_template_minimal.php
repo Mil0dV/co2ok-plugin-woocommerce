@@ -11,11 +11,11 @@
         ?>
 
         <a href="#!" input type="button" role="button" tabindex="0" style="outline: none; -webkit-appearance: none;" class="co2ok_nolink">
-          <div class="inner_checkbox_label inner_checkbox_label_minimal global" id="minimalTemp" input type="button" role="button" tabindex="0" style="outline: none; -webkit-appearance: none;">
+          <div class="inner_checkbox_label inner_checkbox_label_minimal co2ok_global_temp" id="minimal_co2ok_temp" input type="button" role="button" tabindex="0" style="outline: none; -webkit-appearance: none;">
             <div id="checkbox">
             </div>
 
-              <span class="make_minimal co2ok_adaptive_color_default make_global"><?php echo __( 'Make ', 'co2ok-for-woocommerce' ); ?></span>
+              <span class="make_co2ok_minimal co2ok_adaptive_color_default make_co2ok_global"><?php echo __( 'Make ', 'co2ok-for-woocommerce' ); ?></span>
               <?php
                     // Replaced co2ok_logo with co2ok_logo_minimal to keep the same logo, rather than switching between a white and default logo.
                   echo co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent::RenderImage('images/logo.svg', 'co2ok_logo', 'co2ok_logo_minimal', 'co2ok_logo_minimal');
