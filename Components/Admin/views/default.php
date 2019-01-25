@@ -16,6 +16,8 @@
 </br>
 </br>
 
+<?= '<pre>'; print_r( _get_cron_array() ); echo '</pre>'; ?>
+
     <div id="col-container">
         
         <div id="col-left">

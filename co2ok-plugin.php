@@ -94,7 +94,14 @@ function co2ok_fs_custom_icon() {
 }
 $co2okfreemius->add_filter( 'plugin_icon' , 'co2ok_plugin_woocommerce\co2ok_fs_custom_icon' );
 
-
+function cron_add_weekly( $schedules ) {
+    // Adds once weekly to the existing schedules.
+    $schedules['weekly'] = array(
+        'interval' => 604800,
+        'display' => __( 'Once Weekly' )
+    );
+    return $schedules;
+}
 
 /**
   * Only activate plugin on cart and checkout page
@@ -294,10 +301,12 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
         }
     }
 
-    //This function is called when the user activates the plugin.
+    //This function is called when the user deactivates the plugin.
     final static function co2ok_Deactivated()
     {
-
+        // This has to be implemented in deactivation of the CO2ok plugin!!!
+        $timestamp = wp_next_scheduled( 'co2ok_weekly_cron_hook' );
+        wp_unschedule_event( $timestamp, 'co2ok_weekly_cron_hook' );
     }
 
     /**
@@ -381,6 +390,30 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
 
                 add_action('wp_ajax_nopriv_co2ok_ajax_set_percentage', array($this, 'co2ok_ajax_set_percentage'));
                 add_action('wp_ajax_co2ok_ajax_set_percentage', array($this, 'co2ok_ajax_set_percentage'));
+
+                // ensure weekly participation log is called only once
+                if ( ! wp_next_scheduled( 'co2ok_weekly_cron_hook' ) ) {
+
+                    if ( !has_action( 'co2ok_weekly_cron_hook', 'co2ok_logWeeklyParticipation' )) {
+                        // Co2ok_Plugin::remoteLogging(json_encode([wp_get_schedules()]));
+
+                        // Co2ok_Plugin::remoteLogging(json_encode([ wp_get_schedules()]));
+
+                        // cron_add_weekly( wp_get_schedules() );
+                        // wp_get_schedules( cron_add_weekly($schedules) );
+                        // $schedules['weekly']
+                        // gets the schedules
+                        wp_get_schedules();
+                        
+                        // hook which should call our logWeeklyParticipation function
+                        add_action( 'co2ok_weekly_cron_hook', 'co2ok_logWeeklyParticipation' );
+                        
+                        // adds weekly schedule to the schedules
+                        add_filter( 'cron_schedules', 'co2ok_plugin_woocommerce\cron_add_weekly' );
+                    }
+                
+                    wp_schedule_event( time(), 'hourly', 'co2ok_weekly_cron_hook' );
+                }
 
                 // Check if merchant is registered, if for whatever reason this merchant is in fact not a registered merchant,
                 // Maybe the api was down when this user registered the plugin, in that case we want to re-register !
@@ -671,6 +704,36 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
             $woocommerce->cart->add_fee(__( 'CO2 compensation', 'co2ok-for-woocommerce' ), $this->surcharge, true, '');
 
     }
+
+    static public function co2ok_logWeeklyParticipation(){
+        global $woocommerce;
+
+        $args = array(
+        'date_completed' => '>' . ( time() - 604800 ),
+        );
+        $orders = wc_get_orders( $args );
+
+        $parti = 0; // participated
+        
+        foreach ($orders as $order) {
+            $fees = $order->get_fees();
+
+            foreach ($fees as $fee) {
+                if ($fee->get_name() == __( 'CO2 compensatie (Inc. BTW)'||'CO2 compensation', 'co2ok-for-woocommerce' )) {
+                    $parti ++;
+                }
+            }
+        }
+        
+        $division = 100 / sizeof($orders);
+        $perc_parti = "Participation= ".($division * $parti)."%";
+        $ordersize = "Ordertotal= ".sizeof($orders);
+        $merchantId = "merchantId= ".get_option('co2ok_id', false);
+        return
+        // Remote log for participation, ordertotal and merchantId
+        Co2ok_Plugin::remoteLogging(json_encode([$perc_parti, $ordersize, $merchantId]));
+    }
+    
 }
 endif; //! class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' )
 
