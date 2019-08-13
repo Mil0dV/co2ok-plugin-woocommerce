@@ -38,6 +38,21 @@
                         <p><a href="https://www.facebook.com/CO2ok/" target="_blank"><span>Facebook</span></a></p>
                         <p><a href="https://twitter.com/CO2ok_eco" target="_blank" ><span>Twitter</span></a></p> 
 
+                        <h2>GIF feature</h2>
+                        <p>We believe in putting smiles on customers faces - a happy customer is a returning one. One of the ways we try to put smiles on peoples faces is our GIF feature - it shows a fun GIF like the one above to customers if they choose CO2 compensation. Of course there are differing opinions on this - use the below setting to disable this feature.</p>
+                        
+                        <form method="POST">
+                        
+                            <input type="radio" name="co2ok_gif_feature" id="on" value="on" <?php if($co2ok_gif_feature == 'on') echo "checked" ?> >
+                            <label style="display: inline" for="on">GIFs ON. (Preferred)</label>
+                            <br>
+                            <input type="radio" name="co2ok_gif_feature" id="off" value="off" <?php if($co2ok_gif_feature == 'off') echo "checked" ?> >
+                            <label style="display: inline" for="off">GIFs OFF.</label>
+                            
+                            <p style="margin-top: 12px">
+                                <input type="submit" value="Save" class="button button-primary button-large"></p>
+                        </form>
+
                         <h2>Compensation preferences:</h2>
                         <p>By default we have set the button to OFF. But you can decide to set the CO2 OK button to default ON. This way you are in control,
                         helping the environment even more!</p>

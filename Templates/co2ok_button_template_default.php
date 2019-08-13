@@ -77,7 +77,7 @@
             ?></a> </span>
         </div>
 
-
+        <?php if ( $co2ok_gif_feature == 'on' ): ?>
         <div class="co2ok_videoRewardBox_container" id="videoRewardBox-view">
 
             <video width="320" height="240" autoplay id="co2ok_videoReward">
@@ -86,6 +86,7 @@
             </video>
 
         </div>
+        <?php endif; ?>
 
 
     </span>

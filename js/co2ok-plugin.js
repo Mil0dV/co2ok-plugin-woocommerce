@@ -434,11 +434,11 @@ var Co2ok_JS = function ()
                   }
                   function hideVideoRewardBox()
                   {
-                      jQuery(".co2ok_videoRewardBox_container").removeClass('ShowVideoRewardBox')
-                      jQuery(".co2ok_videoRewardBox_container").addClass('VideoRewardBox-hidden')
-                      jQuery(".co2ok_videoRewardBox_container").css({
+                    jQuery(".co2ok_videoRewardBox_container").removeClass('ShowVideoRewardBox')
+                    jQuery(".co2ok_videoRewardBox_container").addClass('VideoRewardBox-hidden')
+                    jQuery(".co2ok_videoRewardBox_container").css({
                         marginBottom: 0
-                      });
+                    });
                   }
 
                 if (!(jQuery(this).is(":checked"))) {
@@ -450,13 +450,14 @@ var Co2ok_JS = function ()
                 {
                     jQuery("#co2ok_logo").attr("src", image_url + '/logo_wit.svg');
 
+                    if (jQuery(".co2ok_videoRewardBox_container").length) {
+                        placeVideoRewardBox();
+                        ShowVideoRewardBox();
 
-                    placeVideoRewardBox();
-                    ShowVideoRewardBox();
-
-                    jQuery('#co2ok_videoReward').on('ended',function(){
-                        hideVideoRewardBox();
-                    });
+                        jQuery('#co2ok_videoReward').on('ended',function(){
+                            hideVideoRewardBox();
+                        });
+                    }
 
                     jQuery('.co2ok_checkbox_container').addClass('selected');
                     jQuery('.co2ok_checkbox_container').removeClass('unselected');

@@ -51,7 +51,8 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Components\Co2ok_HelperComponent' 
             array('cart' => $cart,
                     'co2ok_session_opted' =>  $woocommerce->session->co2ok,
                     'currency_symbol' =>get_woocommerce_currency_symbol(),
-                    'surcharge' => $surcharge
+                    'surcharge' => $surcharge,
+                    'co2ok_gif_feature' => get_option('co2ok_gif_feature')
                 )
             );
 

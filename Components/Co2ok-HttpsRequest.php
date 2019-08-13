@@ -18,7 +18,10 @@ class Co2ok_HttpsRequest
             $sleep = 1; 
             do {
                 $response = $http->post(  $this->url.'?query='.urlencode($body), array( ) );
-                if (200 == wp_remote_retrieve_response_code($response)) {
+                $response_code = wp_remote_retrieve_response_code($response);
+                // 400 is 'ok' because updateMerchant isn't in the backend yet
+                // see https://trello.com/c/6gDlzpa0
+                if (200 == $response_code || 400 == $response_code) {
                     // Looks good!
                     break;
                 } else {
