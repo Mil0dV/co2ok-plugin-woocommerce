@@ -625,6 +625,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
     {
         $order = wc_get_order($order_id);
         $fees = $order->get_fees();
+        $customerEmail = $order->get_billing_email();
 
         $compensationCost = 0;
         foreach ($fees as $fee) {
@@ -639,7 +640,7 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
         $merchantId = get_option('co2ok_id', false);
         $orderTotal = $order->get_total();
 
-        $graphQLClient->mutation(function ($mutation) use ($merchantId, $order_id, $compensationCost, $orderTotal)
+        $graphQLClient->mutation(function ($mutation) use ($merchantId, $order_id, $compensationCost, $orderTotal, $customerEmail)
         {
             $mutation->setFunctionName('storeTransaction');
 
@@ -649,7 +650,8 @@ if ( !class_exists( 'co2ok_plugin_woocommerce\Co2ok_Plugin' ) ) :
                     'orderId' => $order_id,
                     'compensationCost' => number_format($compensationCost, 2, '.', ''),
                     'orderTotal' => number_format($orderTotal, 2, '.', ''),
-                    'currency' => get_woocommerce_currency()
+                    'currency' => get_woocommerce_currency(),
+                    'customerEmail' => $customerEmail
                 )
             );
             $mutation->setFunctionReturnTypes(array('ok'));
